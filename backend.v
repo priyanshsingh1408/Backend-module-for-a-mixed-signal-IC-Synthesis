@@ -35,14 +35,15 @@ output reg [2:0] o_gain;
     
     // Internal registers used
     reg [2:0] state;                 // Current state
-    reg [2:0] counter;               // Counter for waiting states
+	reg [2:0] counter;               // Counter for waiting states like when we wait 5 clk cycles like that 
 	reg [2:0] data_counter;          // Counter for serial data bits  , it is a 3bit counter and thus can count from 0 to 7
-    reg [2:0] serial_data;           // Serial data storage
+	reg [2:0] serial_data;           // Serial data storage , that i sthe d2 d3 d4 coming from the FPGA
     
     // Registers of ADC Filters used
     reg [6:0] ADCsum;               // Sum for moving average filter
     reg [6:0] ADCavg;               // Average value from filter is stored in ADCavg
     reg [3:0] ADC_reg [0:3];        // 4 registers for the filter
+	// adc_reg is an array of 4 registers and each register is 4bits
     
     // Clock divider registers
     reg [1:0] clk_div_counter;      // Counter for clock division
@@ -219,4 +220,5 @@ output reg [2:0] o_gain;
     
 
 endmodule
+
 
