@@ -36,7 +36,7 @@ output reg [2:0] o_gain;
     // Internal registers used
     reg [2:0] state;                 // Current state
     reg [2:0] counter;               // Counter for waiting states
-    reg [2:0] data_counter;          // Counter for serial data bits
+	reg [2:0] data_counter;          // Counter for serial data bits  , it is a 3bit counter and thus can count from 0 to 7
     reg [2:0] serial_data;           // Serial data storage
     
     // Registers of ADC Filters used
@@ -219,3 +219,4 @@ output reg [2:0] o_gain;
     
 
 endmodule
+
