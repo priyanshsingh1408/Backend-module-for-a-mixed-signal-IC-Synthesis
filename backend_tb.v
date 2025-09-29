@@ -8,7 +8,8 @@ module backend_tb();
     reg main_clk;
     reg ro_clockmodel;
     reg [3:0] adc_out;
-    
+    // because this tb is driving both the backend and the FPGA module thus , it has most the ones as wires and only external inout to both like
+    // main clk and adc are are reg
     wire resetbAll, resetb_amp, resetb_core;
     wire [2:0] gain;
     wire sclk, sdin;
@@ -83,3 +84,4 @@ module backend_tb();
     
 
 endmodule
+
