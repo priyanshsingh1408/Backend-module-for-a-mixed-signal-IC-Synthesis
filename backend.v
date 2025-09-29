@@ -72,7 +72,8 @@ output reg [2:0] o_gain;
         end
     end
     
-    // Clock divider for o_core_clk
+    // Clock divider for o_core_clk 
+	// clk div counter is a 2bit counter 00 -> 01-> 10-> 11
     always @(posedge i_clk or negedge i_resetbAll) begin
         if (~i_resetbAll) begin
             clk_div_counter <= 2'd0;
@@ -85,7 +86,9 @@ output reg [2:0] o_gain;
     // Generating o_core_clk based on ADCavg
     always @(*) begin
         if (o_Ibias_2x == 1'b1) begin
-            // Dividing clock by 4 using ternary operator and counter
+            // Dividing clock by 4 using ternary operator and counter 
+			// thus here as clk div counter is 2 bit counter it has 4 values and only for 1 value 0 we make o_core_clk as 1 and for rest 3 make it 0 , 
+			// in this way the clk freq is reduced by 4 and it is slowed by 4
             o_core_clk = (clk_div_counter == 2'd0) ? 1'b1 : 1'b0;
         end
         else begin
@@ -214,4 +217,5 @@ output reg [2:0] o_gain;
         end
     end
     
+
 endmodule
