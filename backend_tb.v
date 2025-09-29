@@ -55,7 +55,7 @@ module backend_tb();
         ro_clockmodel <= 0;
         adc_out <= 4'd10; // Initial ADC value
         
-        #4 resetbFPGA <= 1;
+        #4 resetbFPGA <= 1;   //this means delay of 4 time units mentioned in the timescale units
         
         // Test ADC value changes
         #250 adc_out <= 4'd14; // Test high temperature case
@@ -81,4 +81,5 @@ module backend_tb();
     // Generation of RO clock (800 MHz => 1.25ns period)
     always #0.625 ro_clockmodel <= ~ro_clockmodel;
     
+
 endmodule
